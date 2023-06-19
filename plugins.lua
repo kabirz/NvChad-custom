@@ -51,7 +51,27 @@ local plugins = {
   },
   {
     'mhinz/vim-startify',
+    event = "VimEnter",
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     lazy = false,
+  },
+  {
+    "saecki/crates.nvim",
+    ft = {"rust", "toml"},
+    config = function(_, opts)
+      local crates = require("crates")
+      crates.setup(opts)
+      crates.show()
+    end
+  },
+  {
+    "simrat39/rust-tools.nvim",
+    dependencies = "neovim/nvim-lspconfig",
+    ft = "rust",
+    opts = require("custom.configs.rust-tools"),
+    config = function(_, opts)
+      require("rust-tools").setup(opts)
+    end
   },
   -- Install a plugin
   {
