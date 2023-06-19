@@ -49,6 +49,10 @@ local plugins = {
       vim.keymap.set('i', '<Right>', function() return vim.fn["codeium#Accept"]() end, { expr = true })
     end
   },
+  {
+    'mhinz/vim-startify',
+    lazy = false,
+  },
   -- Install a plugin
   {
     "max397574/better-escape.nvim",
