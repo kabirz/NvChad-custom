@@ -18,3 +18,10 @@ sudo pacman -S neovim
 git clone https://github.com/NvChad/NvChad.git ~/.config/nvim
 git clone https://github.com/kabirz/NvChad-custom ~/.config/nvim/lua/custom
 ```
+
+## help
+
+lua print table
+```lua
+print(vim..inspect(opts))
+```
