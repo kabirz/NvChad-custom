@@ -5,7 +5,7 @@
 --   pattern = "*",
 --   command = "tabdo wincmd =",
 -- })
-
+vim.opt.whichwrap = "<>[]"
 vim.cmd([[
   augroup restore_cursor_position
   autocmd!

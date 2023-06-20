@@ -1,4 +1,4 @@
-local on_attach = require("plugins.configs.lspconfig").on_attach
+local on_attach = require("custom.utils").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local options = {
@@ -7,23 +7,33 @@ local options = {
       use_telescope = true,
     },
     autosethints = true,
-    inlay_hints = { show_parameter_hints = true },
+    inlay_hints = {
+      auto = true,
+      show_parameter_hints = true,
+      parameter_hints_prefix = '',
+      other_hints_prefix = ": ",
+      max_len_align = false,
+      max_len_align_padding = 1,
+      right_align = false,
+      right_align_padding = 7,
+      highlight = "LazyReasonFt",
+    },
     hover_actions = { auto_focus = true }
   },
 
   server = {
-    on_attach = function (_, buffer)
-      require("rust-tools").inlay_hints.set()
-      require("rust-tools").inlay_hints.enable()
-      require('rust-tools').runnables.runnables()
-      on_attach(_, buffer)
-    end,
+    on_attach = on_attach,
     capabilities = capabilities,
+    codelens = true,
     settings = {
-      ["rust-analyzer"] = {
-        lens = {
+      rust_analyzer = {
+        codelens = {
           enable = true,
-        }
+        },
+        diagnostics = {
+          enable = true,
+        },
+
       }
     }
   }
