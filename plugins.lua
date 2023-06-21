@@ -77,7 +77,7 @@ local plugins = {
     'Exafunction/codeium.vim',
     lazy = false,
     config = function ()
-      vim.keymap.set('i', '<C-Right>', function() return vim.fn["codeium#Accept"]() end, { expr = true })
+      vim.keymap.set('i', '<C-]>', function() return vim.fn["codeium#Accept"]() end, { expr = true })
     end
   },
   {
@@ -99,10 +99,22 @@ local plugins = {
     "simrat39/rust-tools.nvim",
     dependencies = "neovim/nvim-lspconfig",
     ft = "rust",
-    opts = require("custom.configs.rust-tools"),
+    init = function()
+      require("core.utils").load_mappings "rust_tools"
+    end,
+    opts = require("custom.utils").rust_opts,
     config = function(_, opts)
       require("rust-tools").setup(opts)
     end
+  },
+  {
+    'p00f/clangd_extensions.nvim',
+    dependencies = "neovim/nvim-lspconfig",
+    ft = {"c", "cpp"},
+    opts = require("custom.utils").clangd_opts,
+    config = function(_, opts)
+      require("clangd_extensions").setup(opts)
+    end,
   },
   -- Install a plugin
   {

@@ -35,6 +35,12 @@ M.nvimtree = {
   },
 }
 
+M.rust_tools = {
+  n = {
+    ['<leader>rr'] = {function() vim.cmd("RustRun") end, "Run current file" },
+  }
+}
+
 -- more keybinds!
 
 return M
