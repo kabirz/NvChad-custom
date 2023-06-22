@@ -76,8 +76,8 @@ local plugins = {
   {
     'Exafunction/codeium.vim',
     lazy = false,
-    config = function ()
-      vim.keymap.set('i', '<C-]>', function() return vim.fn["codeium#Accept"]() end, { expr = true })
+    config = function()
+      require("core.utils").load_mappings "codeium"
     end
   },
   {
@@ -125,6 +125,13 @@ local plugins = {
     end,
   },
 
+  {
+    'dhruvasagar/vim-zoom',
+    lazy = false,
+    config = function()
+      require("core.utils").load_mappings "zoom"
+    end,
+  },
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",

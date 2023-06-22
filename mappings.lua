@@ -2,45 +2,51 @@
 local M = {}
 M.general = {
   n = {
-    [";"] = { ":", "enter command mode", opts = { nowait = true } },
-    ["bl"] = { function() vim.cmd("bnext") end, "Goto next buffer" },
-    ["bh"] = { function() vim.cmd("bprevious") end, "Goto prev tab" },
-    ["bf"] = { function() vim.cmd("bfirst") end, "Goto first tab" },
-    ["be"] = { function() vim.cmd("blast") end, "Goto last tab" },
-    ["gb"] = { function() vim.cmd("bd") end, "close current file" },
-    ["tl"] = { function() vim.cmd("bnext") end, "Goto next tab" },
-    ["th"] = { function() vim.cmd("tabprevious") end, "Goto prev tab" },
-    ["tf"] = { function() vim.cmd("tabfirst") end, "Goto first tab" },
-    ["te"] = { function() vim.cmd("tablast") end, "Goto last tab" },
-    ["gk"] = { function() vim.cmd("Man") end, "Goto manual" },
+    ["bl"] = { "<cmd> bnext <CR>", "Goto next buffer" },
+    ["bh"] = { "<cmd> bprevious <CR>", "Goto prev tab" },
+    ["bf"] = { "<cmd> bfirst <CR>", "Goto first tab" },
+    ["be"] = { "<cmd> blast <CR>", "Goto last tab" },
+    ["gb"] = { "<cmd> bd <CR>", "close current file" },
+    ["tl"] = { "<cmd> bnext <CR>", "Goto next tab" },
+    ["th"] = { "<cmd> tabprevious <CR>", "Goto prev tab" },
+    ["tf"] = { "<cmd> tabfirst <CR>", "Goto first tab" },
+    ["te"] = { "<cmd> tablast <CR>", "Goto last tab" },
+    ["gk"] = { "<cmd> Man <CR>", "Goto manual" },
     ["<leader>h"] = { "<C-w>h", "Window left" },
     ["<leader>l"] = { "<C-w>l", "Window right" },
     ["<leader>j"] = { "<C-w>j", "Window down" },
     ["<leader>k"] = { "<C-w>k", "Window up" },
+  },
+}
 
-
+M.codeium = {
+  plugin = true,
+  i = {
+    ['<C-]>'] = { vim.fn["codeium#Accept"], 'codeium accept', opts = { expr = true }},
   },
 }
 
 M.nvimtree = {
+  plugin = true,
   n = {
-    ["<leader>a" ] = { function ()
-      require("nvim-tree.api").tree.toggle{focus = true, path = vim.fn.expand('%:p:h')}
-    end, "Toggle current file nvimtree"
-    },
-    ["<leader>e" ] = { function ()
-      require("nvim-tree.api").tree.toggle{focus = true, path = vim.fn.getcwd()}
-    end, "Toggle cwd nvimtree"
-    },
+    ["<leader>a" ] = { function() vim.cmd(string.format("NvimTreeToggle %s", vim.fn.expand("%:p:h"))) end, "Toggle current file nvimtree" },
+    ["<leader>e" ] = { "<cmd> NvimTreeToggle <cr>", "Toggle cwd nvimtree" },
   },
 }
 
 M.rust_tools = {
+  plugin = true,
   n = {
-    ['<leader>rr'] = {function() vim.cmd("RustRun") end, "Run current file" },
+    ['<leader>rr'] = {"<cmd> RustRun <CR>", "Run current file" },
   }
 }
 
+M.zoom = {
+  plugin = true,
+  n = {
+	  ['<leader>gm']  = {'<Plug>(zoom-toggle)', 'zoom toggle'},
+  },
+}
 -- more keybinds!
 
 return M
