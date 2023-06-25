@@ -1,23 +1,4 @@
---
--- This function has been generated from your
---   view.mappings.list
---   view.mappings.custom_only
---   remove_keymaps
---
--- You should add this function to your configuration and set on_attach = on_attach in the nvim-tree setup call.
---
--- Although care was taken to ensure correctness and completeness, your review is required.
---
--- Please check for the following issues in auto generated content:
---   "Mappings removed" is as you expect
---   "Mappings migrated" are correct
---
--- Please see https://github.com/nvim-tree/nvim-tree.lua/wiki/Migrating-To-on_attach for assistance in migrating.
---
-local M = require("plugins.configs.nvimtree")
-M.filters.custom = { '*.o', '*.obj' }
-M.filters.dotfiles = true
-M.on_attach = function (bufnr)
+local on_attach = function (bufnr)
   local api = require('nvim-tree.api')
 
   local function opts(desc)
@@ -107,19 +88,20 @@ M.on_attach = function (bufnr)
   vim.keymap.set('n', 'C', api.tree.change_root_to_node, opts('CD'))
   vim.keymap.set('n', 'Z', api.node.run.system, opts('Run System'))
 
+  -- auto close
+  vim.api.nvim_create_autocmd("BufEnter", {
+    group = vim.api.nvim_create_augroup("NvimTreeClose", {clear = true}),
+    pattern = "NvimTree_*",
+    callback = function()
+      local layout = vim.api.nvim_call_function("winlayout", {})
+      if layout[1] == "leaf" and
+        vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "NvimTree"
+        and layout[3] == nil then
+        vim.cmd("confirm quit") end
+    end
+  })
 end
 
-M.git.enable = true
-M.renderer.highlight_git = true
-M.renderer.icons.show.git = true
-M.renderer.icons.glyphs.git ={
-  unstaged = "",
-  staged = "✓",
-  unmerged = "",
-  renamed = "➜",
-  untracked = "★",
-  deleted = "",
-  ignored = "◌",
-}
+return on_attach
 
-return M
+
