@@ -16,6 +16,7 @@ M.general = {
     ["<leader>l"] = { "<C-w>l", "Window right" },
     ["<leader>j"] = { "<C-w>j", "Window down" },
     ["<leader>k"] = { "<C-w>k", "Window up" },
+    [';q'] = { "<cmd> cclose <CR>", "close quickfix list" },
   },
 }
 
@@ -37,14 +38,14 @@ M.nvimtree = {
 M.rust_tools = {
   plugin = true,
   n = {
-    ['<leader>rr'] = {"<cmd> RustRun <CR>", "Run current file" },
+    [';r'] = {"<cmd> RustRun <CR>", "Run current file" },
   }
 }
 
 M.zoom = {
   plugin = true,
   n = {
-	  ['<leader>gm']  = {'<Plug>(zoom-toggle)', 'zoom toggle'},
+	  [';m']  = {'<Plug>(zoom-toggle)', 'zoom toggle'},
   },
 }
 -- more keybinds!

@@ -59,8 +59,8 @@ local plugins = {
     "AckslD/nvim-neoclip.lua",
     lazy = false,
     dependencies = {
-      { 'kkharji/sqlite.lua', module = 'sqlite' },
-      { "nvim-telescope/telescope.nvim"},
+      { 'kkharji/sqlite.lua' },
+      { "nvim-telescope/telescope.nvim" },
     },
     opts = require("custom.configs.neoclip"),
     config = function(_, opts)
@@ -79,12 +79,6 @@ local plugins = {
     config = function()
       require("core.utils").load_mappings "codeium"
     end
-  },
-  {
-    'mhinz/vim-startify',
-    event = "VimEnter",
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    lazy = false,
   },
   {
     "saecki/crates.nvim",
@@ -131,6 +125,10 @@ local plugins = {
     config = function()
       require("core.utils").load_mappings "zoom"
     end,
+  },
+  {
+    "folke/which-key.nvim",
+    keys = { "<leader>", '"', "'", "`", "c", "v", 'g', ';', ',', 'd' },
   },
   -- To make a plugin not be loaded
   -- {

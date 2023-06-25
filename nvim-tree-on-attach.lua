@@ -15,6 +15,8 @@
 -- Please see https://github.com/nvim-tree/nvim-tree.lua/wiki/Migrating-To-on_attach for assistance in migrating.
 --
 local M = require("plugins.configs.nvimtree")
+M.filters.custom = { '*.o', '*.obj' }
+M.filters.dotfiles = true
 M.on_attach = function (bufnr)
   local api = require('nvim-tree.api')
 
