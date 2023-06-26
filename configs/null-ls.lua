@@ -10,13 +10,51 @@ local sources = {
 
   -- webdev stuff
   b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
-  b.formatting.prettier.with { filetypes = { "html", "markdown", "css" } }, -- so prettier works only on these filetypes
+  b.formatting.prettier.with {
+    filetypes = {
+      "vue",
+			"typescript",
+			"javascript",
+			"typescriptreact",
+			"javascriptreact",
+			"yaml",
+			"html",
+			"css",
+			"scss",
+			"sh",
+			"markdown",
+    }
+  }, -- so prettier works only on these filetypes
 
+  -- python
+  b.formatting.autopep8.with { filetypes = { "python" } },
   -- Lua
   b.formatting.stylua,
+  -- cmake
+  b.formatting.cmake_format.with { filetypes = { "cmake" } },
+  -- rust
+  b.formatting.rustfmt,
 
   -- cpp
-  b.formatting.clang_format,
+  b.formatting.clang_format.with {
+    filetypes = { "c", "cpp" },
+    extra_args = {
+      "--style=file:".. vim.fn.stdpath "config" .. "/lua/custom/configs/.clang-format"
+    },
+  },
+  -- lint
+  -- cpp
+  -- b.diagnostics.cpplint,
+  -- shell
+  b.diagnostics.shellcheck,
+  -- cmake
+  b.diagnostics.cmake_lint,
+  -- markdown
+  b.diagnostics.markdownlint,
+  -- json
+  b.diagnostics.jsonlint,
+  -- python
+  b.diagnostics.pylint,
 }
 
 null_ls.setup {

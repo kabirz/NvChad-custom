@@ -18,20 +18,29 @@ M.treesitter = {
 
 M.mason = {
   ensure_installed = {
-    "bash-language-server",
+    -- lsp server
+    'bash-language-server',
     'yaml-language-server',
-    "lua-language-server",
-    "cmake-language-server",
-    "rust-analyzer",
-    "clangd",
-    "clang-format",
+    'lua-language-server',
+    'cmake-language-server',
     'python-lsp-server',
+    'rust-analyzer',
+    'clangd',
+
+    -- format
+    'prettier',
+    'rustfmt',
+    'clang-format',
+    'autopep8',
+    'cmakelang',
+
+    -- linting
+    'shellcheck',
     'cmakelint',
     'cpplint',
     'jsonlint',
     'markdownlint',
     'pylint',
-    'shellcheck'
   },
 }
 
