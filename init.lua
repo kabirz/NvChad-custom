@@ -6,10 +6,12 @@
 --   command = "tabdo wincmd =",
 -- })
 vim.opt.whichwrap = "<>[]"
-vim.cmd([[
-  augroup restore_cursor_position
-  autocmd!
-  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
-  augroup END
-]])
-
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = { "*" },
+  callback = function()
+    if vim.fn.line("'\"") > 0 and vim.fn.line("'\"") <= vim.fn.line("$") then
+      vim.fn.setpos(".", vim.fn.getpos("'\""))
+      vim.cmd("silent! foldopen")
+    end
+  end,
+})

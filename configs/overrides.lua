@@ -30,6 +30,7 @@ M.mason = {
     -- format
     'prettier',
     'rustfmt',
+    'stylua',
     'clang-format',
     'autopep8',
     'cmakelang',
