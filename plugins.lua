@@ -119,6 +119,15 @@ local plugins = {
     end
   },
   {
+    'TimUntersberger/neogit',
+    lazy = false,
+    cmd = "Neogit",
+    dependencies = 'nvim-lua/plenary.nvim',
+    config = function()
+      require("core.utils").load_mappings "neogit"
+    end
+  },
+  {
     "folke/which-key.nvim",
     keys = { '<leader>', '"', "'", '`', 'c', 'v', 'g', ';', ',', 'd' },
   },

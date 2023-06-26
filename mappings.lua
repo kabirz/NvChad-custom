@@ -54,6 +54,13 @@ M.outline = {
     [';o'] = {"<cmd> SymbolsOutline <CR>", "toggle symbol outline"},
   }
 }
+
+M.neogit = {
+  plugin = true,
+  n = {
+    [';g'] = {"<cmd> Neogit <CR>", "Neogit"},
+  }
+}
 -- more keybinds!
 
 return M
