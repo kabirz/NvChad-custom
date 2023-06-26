@@ -6,16 +6,16 @@ M.general = {
     ["bh"] = { "<cmd> bprevious <CR>", "Goto prev tab" },
     ["bf"] = { "<cmd> bfirst <CR>", "Goto first tab" },
     ["be"] = { "<cmd> blast <CR>", "Goto last tab" },
-    ["gb"] = { "<cmd> bd <CR>", "close current file" },
+    ["bd"] = { "<cmd> bd <CR>", "close current file" },
     ["tl"] = { "<cmd> bnext <CR>", "Goto next tab" },
     ["th"] = { "<cmd> tabprevious <CR>", "Goto prev tab" },
     ["tf"] = { "<cmd> tabfirst <CR>", "Goto first tab" },
     ["te"] = { "<cmd> tablast <CR>", "Goto last tab" },
     ["gk"] = { "<cmd> Man <CR>", "Goto manual" },
-    ["<leader>h"] = { "<C-w>h", "Window left" },
-    ["<leader>l"] = { "<C-w>l", "Window right" },
-    ["<leader>j"] = { "<C-w>j", "Window down" },
-    ["<leader>k"] = { "<C-w>k", "Window up" },
+    [";h"] = { "<C-w>h", "Window left" },
+    [";l"] = { "<C-w>l", "Window right" },
+    [";j"] = { "<C-w>j", "Window down" },
+    [";k"] = { "<C-w>k", "Window up" },
     [';q'] = { "<cmd> cclose <CR>", "close quickfix list" },
   },
 }
@@ -31,7 +31,6 @@ M.nvimtree = {
   plugin = true,
   n = {
     ["<leader>a" ] = { function() vim.cmd(string.format("NvimTreeToggle %s", vim.fn.expand("%:p:h"))) end, "Toggle current file nvimtree" },
-    ["<leader>e" ] = { "<cmd> NvimTreeToggle <cr>", "Toggle cwd nvimtree" },
   },
 }
 
