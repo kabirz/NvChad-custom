@@ -109,8 +109,18 @@ local plugins = {
     end,
   },
   {
+    "simrat39/symbols-outline.nvim",
+    cmd = "SymbolsOutline",
+    lazy = false,
+    opts = require('custom.configs.symbols_outline'),
+    config = function(_, opts)
+      require("symbols-outline").setup(opts)
+      require("core.utils").load_mappings "outline"
+    end
+  },
+  {
     "folke/which-key.nvim",
-    keys = { "<leader>", '"', "'", "`", "c", "v", 'g', ';', ',', 'd' },
+    keys = { '<leader>', '"', "'", '`', 'c', 'v', 'g', ';', ',', 'd' },
   },
   -- To make a plugin not be loaded
   -- {

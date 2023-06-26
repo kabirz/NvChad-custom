@@ -47,6 +47,13 @@ M.zoom = {
 	  [';m']  = {'<Plug>(zoom-toggle)', 'zoom toggle'},
   },
 }
+
+M.outline = {
+  plugin = true,
+  n = {
+    [';o'] = {"<cmd> SymbolsOutline <CR>", "toggle symbol outline"},
+  }
+}
 -- more keybinds!
 
 return M
