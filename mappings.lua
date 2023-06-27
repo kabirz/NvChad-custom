@@ -17,6 +17,7 @@ M.general = {
     [";j"] = { "<C-w>j", "Window down" },
     [";k"] = { "<C-w>k", "Window up" },
     [';q'] = { "<cmd> cclose <CR>", "close quickfix list" },
+    [';c'] = { "<cmd> edit " .. vim.fn.stdpath('config') .. "/lua/custom/init.lua <CR>", "open custom config" },
   },
 }
 
