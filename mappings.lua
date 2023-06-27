@@ -84,6 +84,18 @@ M.nvterm = {
     ['<leader>v'] = { '<>', 'none' },
   },
 }
+
+M.lspconfig = {
+  plugin = true,
+  v = {
+    ["m"] = {
+      function()
+        vim.lsp.buf.format { async = true }
+      end,
+      "LSP formatting selected buffer",
+    },
+  }
+}
 -- more keybinds!
 
 return M
