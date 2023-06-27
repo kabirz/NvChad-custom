@@ -61,6 +61,28 @@ M.neogit = {
     [';g'] = {"<cmd> Neogit <CR>", "Neogit"},
   }
 }
+
+M.nvterm = {
+  plugin = true,
+  n = {
+    -- new
+    [",h"] = {
+      function()
+        require("nvterm.terminal").new "horizontal"
+      end,
+      "New horizontal term",
+    },
+
+    [",v"] = {
+      function()
+        require("nvterm.terminal").new "vertical"
+      end,
+      "New vertical term",
+    },
+    ['<leader>h'] = { '<>', 'none' },
+    ['<leader>v'] = { '<>', 'none' },
+  },
+}
 -- more keybinds!
 
 return M

@@ -128,6 +128,13 @@ local plugins = {
     end
   },
   {
+    "machakann/vim-highlightedyank",
+    event = "BufRead",
+    config = function()
+      vim.g.highlightedyank_highlight_duration = 100
+    end
+  },
+  {
     "folke/which-key.nvim",
     keys = { '<leader>', '"', "'", '`', 'c', 'v', 'g', ';', ',', 'd' },
   },

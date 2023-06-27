@@ -38,7 +38,7 @@ M.mason = {
     -- linting
     'shellcheck',
     'cmakelint',
-    'cpplint',
+    'clangcheck',
     'jsonlint',
     'markdownlint',
     'pylint',

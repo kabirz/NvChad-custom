@@ -44,7 +44,7 @@ local sources = {
   },
   -- lint
   -- cpp
-  -- b.diagnostics.cpplint,
+  b.diagnostics.clang_check,
   -- shell
   b.diagnostics.shellcheck,
   -- cmake
@@ -55,6 +55,10 @@ local sources = {
   b.diagnostics.jsonlint,
   -- python
   b.diagnostics.pylint,
+
+  -- actions
+  b.completion.spell,
+  b.completion.luasnip,
 }
 
 null_ls.setup {
