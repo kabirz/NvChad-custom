@@ -11,6 +11,7 @@ M.general = {
     ["th"] = { "<cmd> tabprevious <CR>", "Goto prev tab" },
     ["tf"] = { "<cmd> tabfirst <CR>", "Goto first tab" },
     ["te"] = { "<cmd> tablast <CR>", "Goto last tab" },
+    ["td"] = { "<cmd> tabclose <CR>", "close current tab" },
     ["gk"] = { "<cmd> Man <CR>", "Goto manual" },
     [";h"] = { "<C-w>h", "Window left" },
     [";l"] = { "<C-w>l", "Window right" },
@@ -38,7 +39,7 @@ M.nvimtree = {
 M.rust_tools = {
   plugin = true,
   n = {
-    [';r'] = {"<cmd> RustRun <CR>", "Run current file" },
+    [';rr'] = {"<cmd> RustRun <CR>", "Run current rust file" },
   }
 }
 
@@ -60,6 +61,13 @@ M.neogit = {
   plugin = true,
   n = {
     [';g'] = {"<cmd> Neogit <CR>", "Neogit"},
+  }
+}
+
+M.code_runner = {
+  plugin = true,
+  n = {
+    [';rb'] = {"<cmd> RunCode <CR>", "code run current file"},
   }
 }
 

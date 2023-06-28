@@ -131,8 +131,18 @@ local plugins = {
     "machakann/vim-highlightedyank",
     event = "BufRead",
     config = function()
-      vim.g.highlightedyank_highlight_duration = 100
+      vim.g.highlightedyank_highlight_duration = 500
     end
+  },
+  {
+    "CRAG666/code_runner.nvim",
+    lazy = false,
+    cmd = { "RunCode", "RunFile", "RunProject", "RunClose", "CRFiletype", "CRProjects" },
+    opts = require("custom.configs.code_runner"),
+    config = function (_, opts)
+      require("core.utils").load_mappings "code_runner"
+      require("code_runner").setup(opts)
+    end,
   },
   {
     "folke/which-key.nvim",

@@ -12,7 +12,7 @@ end
 -- if you just want default config for the servers then put them in a table
 local servers = {
   {"bashls", "bash"},
-  {"cmake", "cmake"},
+  {"neocmake", "cmake"},
   {"pylsp", "py"},
 }
 if not clangd_found then
@@ -28,5 +28,3 @@ for _, lsps in ipairs(servers) do
     codelens = true,
   }
 end
-
-
