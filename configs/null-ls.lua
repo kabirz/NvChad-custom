@@ -44,7 +44,7 @@ local sources = {
   },
   -- lint
   -- cpp
-  b.diagnostics.clang_check,
+  -- b.diagnostics.clang_check,
   -- shell
   b.diagnostics.shellcheck,
   -- cmake

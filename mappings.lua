@@ -104,6 +104,12 @@ M.lspconfig = {
     },
   }
 }
+M.joshuto = {
+  plugin = true,
+  n = {
+    [";a"] = { "<cmd> Joshuto <CR>", "Joshuto" },
+  },
+}
 -- more keybinds!
 
 return M

@@ -145,8 +145,15 @@ local plugins = {
     end,
   },
   {
+    "theniceboy/joshuto.nvim",
+    lazy = false,
+    config = function ()
+      require("core.utils").load_mappings "joshuto"
+    end,
+  },
+  {
     "folke/which-key.nvim",
-    keys = { '<leader>', '"', "'", '`', 'c', 'v', 'g', ';', ',', 'd' },
+    keys = { '<leader>', '"', "'", '`', 'c', 'v', 'g', ';', ',', 'd', '[', ']' },
   },
   -- To make a plugin not be loaded
   -- {
