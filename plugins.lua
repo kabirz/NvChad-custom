@@ -109,7 +109,7 @@ local plugins = {
     end,
   },
   {
-    "simrat39/symbols-outline.nvim",
+    "rqdmap/symbols-outline.nvim",
     cmd = "SymbolsOutline",
     lazy = false,
     opts = require('custom.configs.symbols_outline'),
