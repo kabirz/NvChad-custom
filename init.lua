@@ -6,6 +6,7 @@
 --   command = "tabdo wincmd =",
 -- })
 vim.opt.whichwrap = "<>[]"
+vim.g.loaded_python3_provider = 1
 vim.api.nvim_create_autocmd("BufReadPost", {
   pattern = { "*" },
   callback = function()

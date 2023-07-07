@@ -23,26 +23,16 @@ M.mason = {
     'yaml-language-server',
     'lua-language-server',
     'neocmakelsp',
-    'python-lsp-server',
-    'rust-analyzer',
     'clangd',
     'deno',
 
     -- format
     'prettier',
-    'rustfmt',
     'stylua',
-    'clang-format',
-    'autopep8',
-    'cmakelang',
 
     -- linting
-    'shellcheck',
-    'cmakelint',
-    'clangcheck',
     'jsonlint',
     'markdownlint',
-    'pylint',
   },
 }
 
