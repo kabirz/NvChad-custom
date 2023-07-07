@@ -6,7 +6,16 @@
 --   command = "tabdo wincmd =",
 -- })
 vim.opt.whichwrap = "<>[]"
-vim.g.loaded_python3_provider = 1
+vim.g.python3_host_prog = "/usr/bin/python3"
+local enable_providers = {
+  "python3_provider",
+  "node_provider",
+}
+
+for _, plugin in pairs(enable_providers) do
+  vim.g["loaded_" .. plugin] = nil
+  vim.cmd("runtime " .. plugin)
+end
 vim.api.nvim_create_autocmd("BufReadPost", {
   pattern = { "*" },
   callback = function()

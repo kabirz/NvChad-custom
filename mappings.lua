@@ -39,7 +39,7 @@ M.nvimtree = {
 M.rust_tools = {
   plugin = true,
   n = {
-    [';rr'] = {"<cmd> RustRun <CR>", "Run current rust file" },
+    [';R'] = {"<cmd> RustRun <CR>", "Run current rust file" },
   }
 }
 
@@ -67,7 +67,7 @@ M.neogit = {
 M.code_runner = {
   plugin = true,
   n = {
-    [';rb'] = {"<cmd> RunCode <CR>", "code run current file"},
+    [';r'] = {"<cmd> RunCode <CR>", "code run current file"},
   }
 }
 
