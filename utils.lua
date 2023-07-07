@@ -51,10 +51,7 @@ M.on_attach = function(client, bufnr)
   end
 end
 
-M.capabilities = require("plugins.configs.lspconfig").capabilities
-M.lspconfig = require "lspconfig"
-
-local inlay_hints = {
+M.inlay_hints = {
   auto = true,
   show_parameter_hints = true,
   parameter_hints_prefix = '',
@@ -63,87 +60,7 @@ local inlay_hints = {
   max_len_align_padding = 1,
   right_align = false,
   right_align_padding = 7,
-  highlight = "LazyReasonFt",
-}
--- rust
-M.rust_opts = {
-  tools = {
-    runnables = {
-      use_telescope = true,
-    },
-    autosethints = true,
-    inlay_hints = inlay_hints,
-    hover_actions = { auto_focus = true }
-  },
-
-  server = {
-    on_attach = M.on_attach,
-    capabilities = M.capabilities,
-    codelens = true,
-    settings = {
-      rust_analyzer = {
-        lens = {
-          enable = true,
-        },
-        diagnostics = {
-          enable = true,
-        },
-
-      }
-    }
-  }
-}
-
--- clangd
-M.clangd_opts = {
-  server = {
-    on_attach = M.on_attach,
-    capabilities = M.capabilities,
-    codelens = true,
-    settings = {
-      cland = {
-        lens = {
-          enable = true,
-        },
-        diagnostics = {
-          enable = true,
-        },
-
-      }
-    }
-  },
-  extensions = {
-    autoSetHints = true,
-    inlay_hints = inlay_hints,
-    ast = {
-      role_icons = {
-        type = "🄣",
-        declaration = "🄓",
-        expression = "🄔",
-        statement = ";",
-        specifier = "🄢",
-        ["template argument"] = "🆃",
-      },
-      kind_icons = {
-        Compound = "🄲",
-        Recovery = "🅁",
-        TranslationUnit = "🅄",
-        PackExpansion = "🄿",
-        TemplateTypeParm = "🅃",
-        TemplateTemplateParm = "🅃",
-        TemplateParamObject = "🅃",
-      },
-      highlights = {
-        detail = "Comment",
-      },
-    },
-    memory_usage = {
-      border = "none",
-    },
-    symbol_info = {
-      border = "none",
-    },
-  },
+  highlight = "Comment",
 }
 
 return M

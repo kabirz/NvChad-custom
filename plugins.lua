@@ -78,18 +78,16 @@ local plugins = {
     init = function()
       require("core.utils").load_mappings "rust_tools"
     end,
-    opts = require("custom.utils").rust_opts,
-    config = function(_, opts)
-      require("rust-tools").setup(opts)
+    config = function()
+      require("rust-tools").setup(require('custom.configs.rust-tools'))
     end
   },
   {
     'p00f/clangd_extensions.nvim',
     dependencies = "neovim/nvim-lspconfig",
     ft = {"c", "cpp"},
-    opts = require("custom.utils").clangd_opts,
     config = function(_, opts)
-      require("clangd_extensions").setup(opts)
+      require("clangd_extensions").setup(require('custom.configs.clangd-tools'))
     end,
   },
   -- Install a plugin

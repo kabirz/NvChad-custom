@@ -22,10 +22,11 @@ M.mason = {
     'bash-language-server',
     'yaml-language-server',
     'lua-language-server',
-    'cmake-language-server',
+    'neocmakelsp',
     'python-lsp-server',
     'rust-analyzer',
     'clangd',
+    'deno',
 
     -- format
     'prettier',
