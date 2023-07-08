@@ -2,23 +2,40 @@
 local M = {}
 M.general = {
   n = {
-    ["bl"] = { "<cmd> bnext <CR>", "Goto next buffer" },
-    ["bh"] = { "<cmd> bprevious <CR>", "Goto prev tab" },
-    ["bf"] = { "<cmd> bfirst <CR>", "Goto first tab" },
-    ["be"] = { "<cmd> blast <CR>", "Goto last tab" },
-    ["bd"] = { "<cmd> bd <CR>", "close current file" },
-    ["tl"] = { "<cmd> tabnext <CR>", "Goto next tab" },
-    ["th"] = { "<cmd> tabprevious <CR>", "Goto prev tab" },
-    ["tf"] = { "<cmd> tabfirst <CR>", "Goto first tab" },
-    ["te"] = { "<cmd> tablast <CR>", "Goto last tab" },
-    ["td"] = { "<cmd> tabclose <CR>", "close current tab" },
-    ["gk"] = { "<cmd> Man <CR>", "Goto manual" },
+    ["bl"] = { "<cmd> bnext <cr>", "Goto next buffer" },
+    ["bh"] = { "<cmd> bprevious <cr>", "Goto prev tab" },
+    ["bf"] = { "<cmd> bfirst <cr>", "Goto first tab" },
+    ["be"] = { "<cmd> blast <cr>", "Goto last tab" },
+    ["bd"] = { "<cmd> bd <cr>", "close current file" },
+    ["tl"] = { "<cmd> tabnext <cr>", "Goto next tab" },
+    ["th"] = { "<cmd> tabprevious <cr>", "Goto prev tab" },
+    ["tf"] = { "<cmd> tabfirst <cr>", "Goto first tab" },
+    ["te"] = { "<cmd> tablast <cr>", "Goto last tab" },
+    ["td"] = { "<cmd> tabclose <cr>", "close current tab" },
+    ["gk"] = { "<cmd> Man <cr>", "Goto manual" },
     [";h"] = { "<C-w>h", "Window left" },
     [";l"] = { "<C-w>l", "Window right" },
     [";j"] = { "<C-w>j", "Window down" },
     [";k"] = { "<C-w>k", "Window up" },
-    [';q'] = { "<cmd> cclose <CR>", "close quickfix list" },
-    [';c'] = { "<cmd> edit " .. vim.fn.stdpath('config') .. "/lua/custom/init.lua <CR>", "open custom config" },
+    [';q'] = { "<cmd> cclose <cr>", "close quickfix list" },
+    [';c'] = { "<cmd> edit " .. vim.fn.stdpath('config') .. "/lua/custom/init.lua <cr>", "open custom config" },
+  },
+}
+
+M.telescope = {
+  plugin = true,
+  n = {
+    [",f"] = { "<cmd> Telescope grep_string <cr>", "Find strings" },
+    [",c"] = { "<cmd> Telescope command_history <cr>", "command history" },
+    [",C"] = { "<cmd> Telescope commands <cr>", "commands" },
+    -- git
+    [",gc"] = { "<cmd> Telescope git_commits <cr>", "git commits" },
+    [",gb"] = { "<cmd> Telescope git_bcommits <cr>", "git buffer commits" },
+    [",gB"] = { "<cmd> Telescope git_branches <cr>", "git branch" },
+    [",gs"] = { "<cmd> Telescope git_status <cr>", "git status" },
+
+    [",s"] = { "<cmd> Telescope symbols <cr>", "Emoji input" },
+    [",m"] = { "<cmd> Telescope marks <cr>", "marks" },
   },
 }
 
@@ -39,7 +56,7 @@ M.nvimtree = {
 M.rust_tools = {
   plugin = true,
   n = {
-    [';R'] = {"<cmd> RustRun <CR>", "Run current rust file" },
+    [';R'] = {"<cmd> RustRun <cr>", "Run current rust file" },
   }
 }
 
@@ -53,21 +70,14 @@ M.zoom = {
 M.outline = {
   plugin = true,
   n = {
-    [';o'] = {"<cmd> SymbolsOutline <CR>", "toggle symbol outline"},
-  }
-}
-
-M.neogit = {
-  plugin = true,
-  n = {
-    [';n'] = {"<cmd> Neogit <CR>", "Neogit"},
+    [';o'] = {"<cmd> SymbolsOutline <cr>", "toggle symbol outline"},
   }
 }
 
 M.code_runner = {
   plugin = true,
   n = {
-    [';r'] = {"<cmd> RunCode <CR>", "code run current file"},
+    [';r'] = {"<cmd> RunCode <cr>", "code run current file"},
   }
 }
 
@@ -95,6 +105,13 @@ M.nvterm = {
 
 M.lspconfig = {
   plugin = true,
+  n = {
+    ["gd"] = { "<cmd> Telescope lsp_definitions <cr>", "LSP definition" },
+    ["gi"] = { "<cmd> Telescope lsp_implementations <cr>", "LSP implementation" },
+    ["dD"] = { "<cmd> Telescope lsp_type_definitions <cr>", "LSP definition type" },
+    ["gr"] = { "<cmd> Telescope lsp_references <cr>", "LSP references" },
+    ["gs"] = { "<cmd> Telescope lsp_dynamic_workspace_symbols <cr>", "LSP workspace symbols" },
+  },
   v = {
     ["m"] = {
       function()
@@ -108,7 +125,7 @@ M.lspconfig = {
 M.joshuto = {
   plugin = true,
   n = {
-    [";a"] = { "<cmd> Joshuto <CR>", "Joshuto" },
+    [";a"] = { "<cmd> Joshuto <cr>", "Joshuto" },
   },
 }
 

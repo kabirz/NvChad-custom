@@ -1,73 +1,54 @@
-local M = {}
-
-M.treesitter = {
-  ensure_installed = {
-    'c', 'cpp', 'css', 'cmake', 'cuda', 'dot',
-    'git_config', 'git_rebase', 'gitattributes', 'gitcommit', 'gitignore',
-    'html', 'ini', 'java', 'json', 'jsonc', 'lua', 'luadoc',
-    'make', 'markdown', 'markdown_inline', 'meson', 'ninja',
-    'perl', 'python', 'rust', 'toml', 'typescript', 'vim', 'vimdoc', 'yaml',
-  },
-  indent = {
-    enable = true,
-    -- disable = {
-    --   "python"
-    -- },
-  },
+-- modify default config
+-- treesitter
+local treesitter = require("plugins.configs.treesitter")
+treesitter.ensure_installed = {
+  'c', 'cpp', 'css', 'cmake', 'cuda', 'dot',
+  'git_config', 'git_rebase', 'gitattributes', 'gitcommit', 'gitignore',
+  'html', 'ini', 'java', 'json', 'jsonc', 'lua', 'luadoc',
+  'make', 'markdown', 'markdown_inline', 'meson', 'ninja',
+  'perl', 'python', 'rust', 'toml', 'typescript', 'vim', 'vimdoc', 'yaml',
 }
 
-M.mason = {
-  ensure_installed = {
-    -- lsp server
-    'bash-language-server',
-    'yaml-language-server',
-    'lua-language-server',
-    'neocmakelsp',
-    'clangd',
-    'deno',
+-- mason
+local mason = require("plugins.configs.mason")
+mason.ensure_installed = {
+  -- lsp server
+  'bash-language-server',
+  'yaml-language-server',
+  'lua-language-server',
+  'neocmakelsp',
+  'clangd',
+  'deno',
 
-    -- format
-    'prettier',
-    'stylua',
+  -- format
+  'prettier',
+  'stylua',
 
-    -- linting
-    'jsonlint',
-    'markdownlint',
-  },
+  -- linting
+  'jsonlint',
+  'markdownlint',
 }
+mason.PATH = "prepend";
+
+-- gitsigns icon 
+local signs = require("plugins.configs.others").gitsigns.signs
+signs.add.text = ""
+signs.change.text = ""
 
 -- git support in nvimtree
-M.nvimtree = require("plugins.configs.nvimtree")
-
-M.nvimtree = {
-  on_attach = require("custom.configs.nvimtree"),
-  filters = {
-    dotfiles = true,
-    custom = { '*.o', '*.obj' },
-  },
-  git = {
-    enable = true,
-  },
-
-  renderer = {
-    highlight_git = true,
-    icons = {
-      show = {
-        git = true,
-      },
-      glyphs = {
-        git = {
-          unstaged = "",
-          staged = "✓",
-          unmerged = "",
-          renamed = "➜",
-          untracked = "★",
-          deleted = "",
-          ignored = "◌",
-        },
-      },
-    },
-  },
+local nvimtree = require("plugins.configs.nvimtree")
+nvimtree.on_attach = require("custom.configs.nvimtree")
+nvimtree.filters = { dotfiles = true, custom = { '*.o', '*.obj' }, }
+nvimtree.git = { enable = true, }
+nvimtree.renderer.highlight_git = true
+nvimtree.renderer.icons.show = { git = true, }
+nvimtree.renderer.icons.glyphs.git = {
+  unstaged = "",
+  staged = "✓",
+  unmerged = "",
+  renamed = "➜",
+  untracked = "★",
+  deleted = "",
+  ignored = "◌",
 }
 
-return M
