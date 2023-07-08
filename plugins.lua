@@ -150,6 +150,14 @@ local plugins = {
     end,
   },
   {
+    'aspeddro/gitui.nvim',
+    lazy = false,
+    config = function ()
+      require("gitui").setup()
+      require("core.utils").load_mappings "gitui"
+    end,
+  },
+  {
     "folke/which-key.nvim",
     keys = { '<leader>', '"', "'", '`', 'c', 'v', 'g', ';', ',', 'd', '[', ']' },
   },

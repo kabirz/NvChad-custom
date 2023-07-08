@@ -60,7 +60,7 @@ M.outline = {
 M.neogit = {
   plugin = true,
   n = {
-    [';g'] = {"<cmd> Neogit <CR>", "Neogit"},
+    [';n'] = {"<cmd> Neogit <CR>", "Neogit"},
   }
 }
 
@@ -104,10 +104,18 @@ M.lspconfig = {
     },
   }
 }
+
 M.joshuto = {
   plugin = true,
   n = {
     [";a"] = { "<cmd> Joshuto <CR>", "Joshuto" },
+  },
+}
+
+M.gitui = {
+  plugin = true,
+  n = {
+    [";g"] = { function () require("gitui").open() end, "gitui" },
   },
 }
 -- more keybinds!
