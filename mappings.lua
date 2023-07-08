@@ -63,7 +63,7 @@ M.rust_tools = {
 M.zoom = {
   plugin = true,
   n = {
-	  [';m']  = {'<Plug>(zoom-toggle)', 'zoom toggle'},
+    [';m']  = { "<cmd> Zoom <cr>", 'zoom toggle' },
   },
 }
 

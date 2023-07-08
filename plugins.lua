@@ -65,8 +65,8 @@ local plugins = {
   },
 
   {
-    'dhruvasagar/vim-zoom',
-    lazy = false,
+    "oberblastmeister/zoom.nvim",
+    event = 'BufEnter',
     config = function()
       require("core.utils").load_mappings "zoom"
     end,
@@ -74,7 +74,7 @@ local plugins = {
   {
     "rqdmap/symbols-outline.nvim",
     cmd = "SymbolsOutline",
-    lazy = false,
+    event = 'BufEnter',
     opts = require('custom.configs.symbols_outline'),
     config = function(_, opts)
       require("symbols-outline").setup(opts)
@@ -90,7 +90,7 @@ local plugins = {
   },
   {
     "CRAG666/code_runner.nvim",
-    lazy = false,
+    event = 'BufEnter',
     cmd = { "RunCode", "RunFile", "RunProject", "RunClose", "CRFiletype", "CRProjects" },
     config = function ()
       require("core.utils").load_mappings "code_runner"
