@@ -19,6 +19,7 @@ M.general = {
     [";k"] = { "<C-w>k", "Window up" },
     [';q'] = { "<cmd> cclose <cr>", "close quickfix list" },
     [';c'] = { "<cmd> edit " .. vim.fn.stdpath('config') .. "/lua/custom/init.lua <cr>", "open custom config" },
+    ["<leader>d" ] = { function() vim.fn.chdir(vim.fn.expand("%:p:h")) end, "change current directory" },
   },
 }
 
@@ -34,7 +35,6 @@ M.telescope = {
     [",gB"] = { "<cmd> Telescope git_branches <cr>", "git branch" },
     [",gs"] = { "<cmd> Telescope git_status <cr>", "git status" },
 
-    [",s"] = { "<cmd> Telescope symbols <cr>", "Emoji input" },
     [",m"] = { "<cmd> Telescope marks <cr>", "marks" },
   },
 }
@@ -53,51 +53,13 @@ M.nvimtree = {
   },
 }
 
-M.rust_tools = {
-  plugin = true,
-  n = {
-    [';R'] = {"<cmd> RustRun <cr>", "Run current rust file" },
-  }
-}
-
-M.zoom = {
-  plugin = true,
-  n = {
-    [';m']  = { "<cmd> Zoom <cr>", 'zoom toggle' },
-  },
-}
-
-M.outline = {
-  plugin = true,
-  n = {
-    [';o'] = {"<cmd> SymbolsOutline <cr>", "toggle symbol outline"},
-  }
-}
-
-M.code_runner = {
-  plugin = true,
-  n = {
-    [';r'] = {"<cmd> RunCode <cr>", "code run current file"},
-  }
-}
-
 M.nvterm = {
   plugin = true,
   n = {
     -- new
-    [",h"] = {
-      function()
-        require("nvterm.terminal").new "horizontal"
-      end,
-      "New horizontal term",
-    },
+    [",h"] = { function() require("nvterm.terminal").new "horizontal" end, "New horizontal term" },
 
-    [",v"] = {
-      function()
-        require("nvterm.terminal").new "vertical"
-      end,
-      "New vertical term",
-    },
+    [",v"] = { function() require("nvterm.terminal").new "vertical" end, "New vertical term" },
     ['<leader>h'] = { '<>', 'none' },
     ['<leader>v'] = { '<>', 'none' },
   },
@@ -113,35 +75,10 @@ M.lspconfig = {
     ["gs"] = { "<cmd> Telescope lsp_dynamic_workspace_symbols <cr>", "LSP workspace symbols" },
   },
   v = {
-    ["m"] = {
-      function()
-        vim.lsp.buf.format { async = true }
-      end,
-      "LSP formatting selected buffer",
-    },
+    ["m"] = { function() vim.lsp.buf.format { async = true } end, "LSP formatting selected buffer" },
   }
 }
 
-M.joshuto = {
-  plugin = true,
-  n = {
-    [";a"] = { "<cmd> Joshuto <cr>", "Joshuto" },
-  },
-}
-
-M.gitui = {
-  plugin = true,
-  n = {
-    [";g"] = { function () require("gitui").open() end, "gitui" },
-  },
-}
-
-M.file_browser = {
-  plugin = true,
-  n = {
-    [",a"] = { "<cmd> Telescope file_browser <cr>", "file browser" },
-  },
-}
 -- more keybinds!
 
 return M

@@ -1,8 +1,6 @@
 ---@type NvPluginSpec[]
 local plugins = {
-
   -- Override plugin definition options
-
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -19,7 +17,6 @@ local plugins = {
       require "custom.configs.lspconfig"
     end, -- Override to setup mason-lspconfig
   },
-
   {
     'Exafunction/codeium.vim',
     event = 'InsertEnter',
@@ -39,97 +36,77 @@ local plugins = {
     "simrat39/rust-tools.nvim",
     dependencies = "neovim/nvim-lspconfig",
     ft = "rust",
-    init = function()
-      require("core.utils").load_mappings "rust_tools"
-    end,
-    config = function()
-      require("rust-tools").setup(require('custom.configs.rust-tools'))
-    end
+    keys = { { ';R', "<cmd> RustRun <cr>", desc = 'Run current rust file' } },
+    opts = require('custom.configs.rust-tools'),
   },
   {
     'p00f/clangd_extensions.nvim',
     dependencies = "neovim/nvim-lspconfig",
     ft = {"c", "cpp"},
-    config = function()
-      require("clangd_extensions").setup(require('custom.configs.clangd-tools'))
-    end,
+    opts = require('custom.configs.clangd-tools'),
   },
   -- Install a plugin
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
-    config = function()
-      require("better_escape").setup()
-    end,
   },
 
   {
     "oberblastmeister/zoom.nvim",
-    event = 'BufEnter',
-    config = function()
-      require("core.utils").load_mappings "zoom"
-    end,
+    keys = { { ';m', "<cmd> Zoom <cr>", desc = 'zoom toggle' } },
   },
   {
     "rqdmap/symbols-outline.nvim",
     cmd = "SymbolsOutline",
-    event = 'BufEnter',
+    keys = { { ';o', "<cmd> SymbolsOutline <cr>", desc = "toggle symbol outline" } },
     opts = require('custom.configs.symbols_outline'),
-    config = function(_, opts)
-      require("symbols-outline").setup(opts)
-      require("core.utils").load_mappings "outline"
-    end
-  },
-  {
-    "machakann/vim-highlightedyank",
-    event = "BufRead",
-    config = function()
-      vim.g.highlightedyank_highlight_duration = 500
-    end
   },
   {
     "CRAG666/code_runner.nvim",
-    event = 'BufEnter',
     cmd = { "RunCode", "RunFile", "RunProject", "RunClose", "CRFiletype", "CRProjects" },
-    config = function ()
-      require("core.utils").load_mappings "code_runner"
-      require("code_runner").setup({
-        mode = "float",
-        startinsert = true,
-        term = { tab = true, size = 15, },
-      })
-    end,
+    keys = { { ';r', "<cmd> RunCode <cr>", desc = "code run current file" } },
+    opts = {
+      mode = "float",
+      startinsert = true,
+      term = { tab = true, size = 15, },
+    },
   },
   {
     "theniceboy/joshuto.nvim",
-    lazy = false,
-    config = function ()
-      require("core.utils").load_mappings "joshuto"
-    end,
+    keys = { { ';a', "<cmd> Joshuto <cr>", desc = "Joshuto" } },
   },
   {
     'aspeddro/gitui.nvim',
-    lazy = false,
-    config = function ()
-      require("gitui").setup()
-      require("core.utils").load_mappings "gitui"
-    end,
+    keys = { { ';g', "<cmd> Gitui <cr>", desc = "gitui" } },
+    opts = { command = { enable = true } },
   },
   {
     'nvim-telescope/telescope-symbols.nvim',
-    lazy = false,
+    keys = { { ';d', "<cmd> Telescope symbols <cr>", desc = "Emoji input" } },
   },
   {
     "nvim-telescope/telescope-file-browser.nvim",
-    lazy = false,
     dependencies = {
       "nvim-telescope/telescope.nvim",
       "nvim-lua/plenary.nvim"
     },
-    config = function ()
-      require("telescope").load_extension "file_browser"
-      require("core.utils").load_mappings "file_browser"
-    end
+    keys = { { ',a', "<cmd> Telescope file_browser <cr>", desc = "file browser" } },
+    config = function()
+      require("telescope").load_extension("file_browser")
+    end,
+  },
+  {
+    "gbprod/yanky.nvim",
+    event = 'BufEnter',
+    dependencies = "kkharji/sqlite.lua",
+    opts = { ring = { storage =  "sqlite" } },
+    keys = {
+      { "<leader>y", "<cmd> Telescope yank_history <cr>", desc = "Open Yank History" },
+    },
+    config = function(_, opts)
+      require("yanky").setup(opts)
+      require("telescope").load_extension("yank_history")
+    end,
   },
   {
     "folke/which-key.nvim",
