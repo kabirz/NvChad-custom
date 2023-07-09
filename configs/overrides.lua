@@ -33,7 +33,7 @@ mason.PATH = "prepend";
 -- gitsigns icon 
 local signs = require("plugins.configs.others").gitsigns.signs
 signs.add.text = ""
-signs.change.text = ""
+signs.change.text = ""
 
 -- git support in nvimtree
 local nvimtree = require("plugins.configs.nvimtree")
@@ -43,12 +43,12 @@ nvimtree.git = { enable = true, }
 nvimtree.renderer.highlight_git = true
 nvimtree.renderer.icons.show = { git = true, }
 nvimtree.renderer.icons.glyphs.git = {
-  unstaged = "",
+  unstaged = "",
   staged = "✓",
   unmerged = "",
   renamed = "➜",
   untracked = "★",
   deleted = "",
-  ignored = "◌",
+  ignored = "",
 }
 

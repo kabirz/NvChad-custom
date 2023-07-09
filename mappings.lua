@@ -135,6 +135,13 @@ M.gitui = {
     [";g"] = { function () require("gitui").open() end, "gitui" },
   },
 }
+
+M.file_browser = {
+  plugin = true,
+  n = {
+    [",a"] = { "<cmd> Telescope file_browser <cr>", "file browser" },
+  },
+}
 -- more keybinds!
 
 return M

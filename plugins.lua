@@ -22,7 +22,7 @@ local plugins = {
 
   {
     'Exafunction/codeium.vim',
-    lazy = false,
+    event = 'InsertEnter',
     config = function()
       require("core.utils").load_mappings "codeium"
     end
@@ -31,9 +31,8 @@ local plugins = {
     "saecki/crates.nvim",
     ft = {"rust", "toml"},
     config = function(_, opts)
-      local crates = require("crates")
-      crates.setup(opts)
-      crates.show()
+      require("crates").setup(opts)
+      require("crates").show()
     end
   },
   {
@@ -119,6 +118,18 @@ local plugins = {
   {
     'nvim-telescope/telescope-symbols.nvim',
     lazy = false,
+  },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    lazy = false,
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim"
+    },
+    config = function ()
+      require("telescope").load_extension "file_browser"
+      require("core.utils").load_mappings "file_browser"
+    end
   },
   {
     "folke/which-key.nvim",
