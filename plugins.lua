@@ -40,7 +40,45 @@ local plugins = {
     opts = require('custom.configs.rust-tools'),
   },
   {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function(_, opts)
+      require("core.utils").load_mappings "blankline"
+      local p = require("base46").get_theme_tb "base_30"
+      local hi = function(name, data) vim.api.nvim_set_hl(0, name, data) end
+      vim.opt.termguicolors = true
+      hi('IndentBlanklineChar',         { fg=p.purple})
+      hi('IndentBlanklineSpaceChar',    { fg=p.yellow })
+      hi('IndentBlanklineContextChar',  { fg=p.teal })
+      hi('IndentBlanklineContextStart', { bg=p.grey })
+      hi('IndentBlanklineIndent1',      { fg=p.blue,    bg=nil, nocombine=true })
+      hi('IndentBlanklineIndent2',      { fg=p.cyan,    bg=nil, nocombine=true })
+      hi('IndentBlanklineIndent3',      { fg=p.red,     bg=nil, nocombine=true })
+      hi('IndentBlanklineIndent4',      { fg=p.azure,   bg=nil, nocombine=true })
+      hi('IndentBlanklineIndent5',      { fg=p.green,   bg=nil, nocombine=true })
+      hi('IndentBlanklineIndent6',      { fg=p.orange,  bg=nil, nocombine=true })
+      opts.space_char_blankline = " "
+      opts.char_highlight_list = {
+        "IndentBlanklineIndent1",
+        "IndentBlanklineIndent2",
+        "IndentBlanklineIndent3",
+        "IndentBlanklineIndent4",
+        "IndentBlanklineIndent5",
+        "IndentBlanklineIndent6",
+      }
+      require("indent_blankline").setup(opts)
+    end,
+  },
+  {
+    "echasnovski/mini.indentscope",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      symbol = "│",
+      options = { try_as_border = true },
+    },
+  },
+  {
     'p00f/clangd_extensions.nvim',
+    enabled = false,
     dependencies = "neovim/nvim-lspconfig",
     ft = {"c", "cpp"},
     opts = require('custom.configs.clangd-tools'),

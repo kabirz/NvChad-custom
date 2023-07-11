@@ -16,14 +16,19 @@ for _, plugin in pairs(enable_providers) do
   vim.g["loaded_" .. plugin] = nil
   vim.cmd("runtime " .. plugin)
 end
-vim.api.nvim_create_autocmd("BufReadPost", {
-  pattern = { "*" },
-  callback = function()
-    if vim.fn.line("'\"") > 0 and vim.fn.line("'\"") <= vim.fn.line("$") then
-      vim.fn.setpos(".", vim.fn.getpos("'\""))
-      vim.cmd("silent! foldopen")
-    end
-  end,
-})
+
+-- sw: shiftwidth
+-- sts: softtabstop 
+-- ts: tabstop
+-- et/noet: expandtab/noexpandtab
+-- cc: colorcolumn
+vim.cmd([[
+  au FileType c,cpp                setlocal sw=4 sts=4 ts=4 noet cc=96
+  au FileType rust                 setlocal sw=4 sts=4 ts=4 et   cc=80
+  au filetype python               setlocal sw=4 sts=4 ts=4 et   cc=80
+  au filetype lua,json,yaml,toml   setlocal sw=2 sts=2 ts=2 et   cc=96
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
+]])
 
 require('custom.configs.overrides')
+
